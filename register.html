@@ -3,18 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Đăng ký học phần</title>
+
 <style>
 body{
-    font-family:Arial;
+    font-family: Arial;
     margin:20px;
-}
-
-h1{margin-bottom:20px;}
-
-.box{
-    border:1px solid #ccc;
-    padding:15px;
-    margin-bottom:20px;
 }
 
 table{
@@ -33,6 +26,7 @@ button{
     background:red;
     color:white;
     border:none;
+    margin-top:15px;
 }
 </style>
 </head>
@@ -41,62 +35,100 @@ button{
 
 <h1>ĐĂNG KÝ HỌC PHẦN</h1>
 
-<div class="box">
-<p>Ngành: <b>CNTT</b></p>
 <p>Số tín chỉ tối đa: <b>20</b></p>
-<p>Số môn đã đăng ký: <b>0</b></p>
-</div>
-
-<h3>Danh sách lớp có thể đăng ký</h3>
+<p>Tổng tín chỉ đã chọn: <b id="tongTinChi">0</b></p>
 
 <table>
 <tr>
+<th>Chọn</th>
 <th>Mã HP</th>
 <th>Tên</th>
-<th>Số tín chỉ</th>
-<th>Chọn</th>
+<th>Tín chỉ</th>
+<th>Thời gian</th>
 </tr>
 
 <tr>
+<td><input type="checkbox" onclick="capNhatTinChi()"></td>
 <td>INT01</td>
 <td>Lập trình C</td>
-<td>3</td>
-<td><input type="checkbox"></td>
+<td class="tinchi">3</td>
+<td class="time">T2-Sáng</td>
 </tr>
 
 <tr>
+<td><input type="checkbox" onclick="capNhatTinChi()"></td>
 <td>INT02</td>
 <td>CSDL</td>
-<td>3</td>
-<td><input type="checkbox"></td>
-</tr>
-</table>
-
-<br>
-
-<button>Đăng ký</button>
-
-<hr>
-
-<h2>Bảng điểm</h2>
-
-<table>
-<tr>
-<th>Môn</th>
-<th>Điểm</th>
+<td class="tinchi">3</td>
+<td class="time">T2-Sáng</td>
 </tr>
 
 <tr>
-<td>Lập trình C</td>
-<td>0.0</td>
-</tr>
-
-<tr>
-<td>CSDL</td>
-<td>0.0</td>
+<td><input type="checkbox" onclick="capNhatTinChi()"></td>
+<td>INT03</td>
+<td>Java</td>
+<td class="tinchi">4</td>
+<td class="time">T3-Chiều</td>
 </tr>
 
 </table>
+
+<button onclick="dangKy()">Đăng ký</button>
+
+<script>
+function capNhatTinChi(){
+    let checkboxes = document.querySelectorAll("input[type=checkbox]");
+    let tinchis = document.querySelectorAll(".tinchi");
+
+    let tong = 0;
+
+    for(let i=0;i<checkboxes.length;i++){
+        if(checkboxes[i].checked){
+            tong += parseInt(tinchis[i].innerText);
+        }
+    }
+
+    document.getElementById("tongTinChi").innerText = tong;
+}
+
+function dangKy(){
+    let checkboxes = document.querySelectorAll("input[type=checkbox]");
+    let tinchis = document.querySelectorAll(".tinchi");
+    let times = document.querySelectorAll(".time");
+
+    let tong = 0;
+    let dsTime = [];
+
+    for(let i=0;i<checkboxes.length;i++){
+        if(checkboxes[i].checked){
+            let tc = parseInt(tinchis[i].innerText);
+            let time = times[i].innerText;
+
+            // kiểm tra trùng lịch
+            if(dsTime.includes(time)){
+                alert("❌ Trùng lịch học!");
+                return;
+            }
+            dsTime.push(time);
+
+            tong += tc;
+        }
+    }
+
+    // kiểm tra tín chỉ
+    if(tong > 20){
+        alert("❌ Vượt quá 20 tín chỉ!");
+        return;
+    }
+
+    if(tong === 0){
+        alert("⚠️ Bạn chưa chọn môn!");
+        return;
+    }
+
+    alert("✅ Đăng ký thành công!");
+}
+</script>
 
 </body>
 </html>
