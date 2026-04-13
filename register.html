@@ -1,38 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Đăng ký học phần</title>
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            background: #f4f4f4;
-        }
+<meta charset="UTF-8">
+<title>Đăng ký học phần</title>
+<style>
+body{
+    font-family:Arial;
+    margin:20px;
+}
 
-        select, button {
-            padding: 10px;
-            margin-top: 10px;
-        }
+h1{margin-bottom:20px;}
 
-        button {
-            background: green;
-            color: white;
-            border: none;
-        }
-    </style>
+.box{
+    border:1px solid #ccc;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:center;
+}
+
+button{
+    padding:10px 20px;
+    background:red;
+    color:white;
+    border:none;
+}
+</style>
 </head>
 
 <body>
-    <h2>Đăng ký học phần</h2>
 
-    <select>
-        <option>Lập trình C</option>
-        <option>Cơ sở dữ liệu</option>
-    </select>
+<h1>ĐĂNG KÝ HỌC PHẦN</h1>
 
-    <br>
-    <button onclick="alert('Đăng ký thành công!')">
-        Đăng ký
-    </button>
+<div class="box">
+<p>Ngành: <b>CNTT</b></p>
+<p>Số tín chỉ tối đa: <b>20</b></p>
+<p>Số môn đã đăng ký: <b>0</b></p>
+</div>
+
+<h3>Danh sách lớp có thể đăng ký</h3>
+
+<table>
+<tr>
+<th>Mã HP</th>
+<th>Tên</th>
+<th>Số tín chỉ</th>
+<th>Chọn</th>
+</tr>
+
+<tr>
+<td>INT01</td>
+<td>Lập trình C</td>
+<td>3</td>
+<td><input type="checkbox"></td>
+</tr>
+
+<tr>
+<td>INT02</td>
+<td>CSDL</td>
+<td>3</td>
+<td><input type="checkbox"></td>
+</tr>
+</table>
+
+<br>
+
+<button>Đăng ký</button>
+
+<hr>
+
+<h2>Bảng điểm</h2>
+
+<table>
+<tr>
+<th>Môn</th>
+<th>Điểm</th>
+</tr>
+
+<tr>
+<td>Lập trình C</td>
+<td>8.5</td>
+</tr>
+
+<tr>
+<td>CSDL</td>
+<td>7.5</td>
+</tr>
+
+</table>
+
 </body>
 </html>
