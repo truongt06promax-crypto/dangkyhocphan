@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Quản lý điểm</title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:20px;
+    background:#f5f6fa;
+}
+
+.container{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px #ccc;
+}
+
+.top-bar{
+    margin-bottom:15px;
+}
+
+button{
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+.btn-add{background:#3498db;color:white;}
+.btn-delete{background:#e74c3c;color:white;}
+.btn-calc{background:#27ae60;color:white;}
+.btn-input{background:#8e44ad;color:white;}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+th, td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#3498db;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📊 Quản lý điểm sinh viên</h2>
+
+<div class="top-bar">
+    <button class="btn-add" onclick="themDot()">+ Thêm đợt thi</button>
+    <button class="btn-delete">Xóa đợt thi</button>
+    <button class="btn-calc" onclick="tinhTB()">Tính điểm TB</button>
+    <button class="btn-input">Nhập điểm</button>
+</div>
+
+<table>
+<tr>
+<th>Mã</th>
+<th>Tên sinh viên</th>
+<th>Nghe</th>
+<th>Nói</th>
+<th>Đọc</th>
+<th>Viết</th>
+<th>Ngữ pháp</th>
+<th>TB</th>
+</tr>
+
+<tr>
+<td>SV01</td>
+<td>Nguyễn Văn A</td>
+<td><input type="number" id="n1"></td>
+<td><input type="number" id="no1"></td>
+<td><input type="number" id="d1"></td>
+<td><input type="number" id="v1"></td>
+<td><input type="number" id="g1"></td>
+<td id="tb1">0</td>
+</tr>
+
+<tr>
+<td>SV02</td>
+<td>Trần Thị B</td>
+<td><input type="number" id="n2"></td>
+<td><input type="number" id="no2"></td>
+<td><input type="number" id="d2"></td>
+<td><input type="number" id="v2"></td>
+<td><input type="number" id="g2"></td>
+<td id="tb2">0</td>
+</tr>
+
+</table>
+
+</div>
+
+<script>
+function themDot(){
+    alert("Đã thêm đợt thi (demo)");
+}
+
+function tinhTB(){
+    // SV1
+    let tb1 = (
+        +n1.value + +no1.value + +d1.value + +v1.value + +g1.value
+    ) / 5;
+
+    document.getElementById("tb1").innerText = tb1.toFixed(2);
+
+    // SV2
+    let tb2 = (
+        +n2.value + +no2.value + +d2.value + +v2.value + +g2.value
+    ) / 5;
+
+    document.getElementById("tb2").innerText = tb2.toFixed(2);
+
+    alert("Đã tính điểm trung bình!");
+}
+</script>
+
+</body>
+</html>
